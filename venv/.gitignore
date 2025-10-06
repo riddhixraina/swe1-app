@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+venv/
+*.pyc
+
+# Database
+db.sqlite3
+
+# AWS Elastic Beanstalk
+.elasticbeanstalk/

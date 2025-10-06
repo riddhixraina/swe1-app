@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-g">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWE Polls</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f4f6f8; color: #333; margin: 0; padding: 2rem; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #1a202c; }
+        .poll-list { list-style: none; padding: 0; }
+        .poll-item { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; margin-bottom: 1rem; padding: 1.5rem; transition: box-shadow 0.2s; }
+        .poll-item:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.08); }
+        .poll-item a { text-decoration: none; color: #2d3748; font-size: 1.25rem; font-weight: 600; }
+        .poll-item p { color: #718096; font-size: 0.9rem; }
+        .pagination { text-align: center; margin-top: 2rem; }
+        .pagination a, .pagination .current { display: inline-block; padding: 0.5rem 1rem; margin: 0 0.25rem; border: 1px solid #ddd; text-decoration: none; color: #007bff; border-radius: 4px; }
+        .pagination .current { background-color: #007bff; color: white; border-color: #007bff; }
+        .pagination .disabled { color: #ccc; border-color: #eee; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 SWE Polls</h1>
+
+        {% if latest_question_list %}
+            <ul class="poll-list">
+            {% for question in latest_question_list %}
+                <li class="poll-item">
+                    <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+                </li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+
+        <div class="pagination">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
