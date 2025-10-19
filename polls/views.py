@@ -4,20 +4,21 @@ from django.urls import reverse
 from django.views import generic
 from .models import Choice, Question
 
-from .models import Choice, Question
 
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
     context_object_name = "latest_question_list"
-    paginate_by = 5 # Add this line to enable pagination
+    paginate_by = 5  # Add this line to enable pagination
 
     def get_queryset(self):
         # Return all questions, ordered by publication date
         return Question.objects.order_by("-pub_date")
 
+
 class DetailView(generic.DetailView):
     model = Question
     template_name = "polls/detail.html"
+
 
 class ResultsView(generic.DetailView):
     model = Question
@@ -28,16 +29,21 @@ class ResultsView(generic.DetailView):
         question = self.get_object()
 
         # Find the previous question
-        context['previous_question'] = Question.objects.filter(
-            pub_date__lt=question.pub_date
-        ).order_by('-pub_date').first()
+        context["previous_question"] = (
+            Question.objects.filter(pub_date__lt=question.pub_date)
+            .order_by("-pub_date")
+            .first()
+        )
 
         # Find the next question
-        context['next_question'] = Question.objects.filter(
-            pub_date__gt=question.pub_date
-        ).order_by('pub_date').first()
+        context["next_question"] = (
+            Question.objects.filter(pub_date__gt=question.pub_date)
+            .order_by("pub_date")
+            .first()
+        )
 
         return context
+
 
 def vote(request, question_id):
     # same as in Part 3

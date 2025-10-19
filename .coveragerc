@@ -1,0 +1,27 @@
+[run]
+source = .
+omit =
+    */migrations/*
+    */tests.py
+    */test_*.py
+    */__pycache__/*
+    */venv/*
+    */.venv/*
+    */env/*
+    */.env/*
+    manage.py
+    */wsgi.py
+    */asgi.py
+    mysite/settings.py
+    .travis.yml
+    mysite/asgi.py
+    mysite/wsgi.py
+
+[report]
+exclude_lines =
+    pragma: no cover
+    def __repr__
+    raise AssertionError
+    raise NotImplementedError
+    if __name__ == .__main__.
+    if settings.DEBUG

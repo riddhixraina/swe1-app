@@ -1,11 +1,15 @@
 # swe1-app
 
+[![Build Status](https://app.travis-ci.com/riddhixraina/swe1-app.svg?branch=main)](https://app.travis-ci.com/riddhixraina/swe1-app)
+[![Coverage Status](https://coveralls.io/repos/github/riddhixraina/swe1-app/badge.svg?branch=main)](https://coveralls.io/github/riddhixraina/swe1-app?branch=main)
+
+A Django polls application with continuous integration...
 # SWE-1 Polls Application
 
 This is a simple polls application built with Django as part of a software engineering course assignment. The project follows the official Django tutorial (Parts 1-4) to create a functional web application where users can view, vote on, and see the results of various polls.
 
 **Live, deployed application:**  
-`http://<your-app-env>.elasticbeanstalk.com/polls`
+`http://swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com/polls/`
 
 ---
 
