@@ -96,4 +96,4 @@ This application is configured for deployment to **AWS Elastic Beanstalk**.
 The necessary configuration files are located in the `.ebextensions` directory.  
 The `django.config` file sets the required environment variables for the WSGI path and Django settings module.
 
----
+---"# Trigger build" 
