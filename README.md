@@ -1,98 +1,102 @@
 # swe1-app
 
 [![Build Status](https://app.travis-ci.com/riddhixraina/swe1-app.svg?branch=main)](https://app.travis-ci.com/riddhixraina/swe1-app)
-[![Coverage Status](https://coveralls.io/github/riddhixraina/swe1-app?branch=main)]
+[![Coverage Status](https://coveralls.io/repos/github/riddhixraina/swe1-app/badge.svg?branch=main)](https://coveralls.io/github/riddhixraina/swe1-app?branch=main)
 
-A Django polls application with continuous integration...
-# SWE-1 Polls Application
-
-This is a simple polls application built with Django as part of a software engineering course assignment. The project follows the official Django tutorial (Parts 1-4) to create a functional web application where users can view, vote on, and see the results of various polls.
-
-**Live, deployed application:**  
-`http://swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com/polls/`
-
----
+A Django polls application with continuous integration, automated testing, and AWS deployment.
 
 ## Features
 
-- **View Polls:** Users can see a paginated list of all available poll questions.
-- **Vote:** Users can select a choice for a specific poll question and cast their vote.
-- **View Results:** After voting, users can see the aggregated results for the poll.
-- **Admin Interface:** A complete admin backend (`/admin`) allows for the creation, modification, and deletion of polls and choices.
-- **Responsive UI:** The application has a clean and simple interface that works on different screen sizes.
+- View Polls: Users can see a paginated list of all available poll questions
+- Vote: Users can select a choice for a specific poll question and cast their vote
+- View Results: After voting, users can see the aggregated results for the poll
+- Admin Interface: Complete admin backend for managing polls
+- Responsive UI: Clean and simple interface
 
----
+## CI/CD Pipeline
 
-## Technology Stack
+- **Travis CI**: Automated builds on every push and pull request
+- **Black**: Code formatting validation
+- **Flake8**: Linting and code quality checks
+- **Coverage**: 100% test coverage
+- **Coveralls**: Coverage reporting and tracking
+- **AWS Elastic Beanstalk**: Automated deployment on successful builds
 
-- **Backend:** Python with the Django Framework
-- **Database:** SQLite (for local development)
-- **Frontend:** HTML5 with inline CSS for styling
-- **Deployment:** AWS Elastic Beanstalk
-
----
-
-## Local Development Setup
-
-To run this project on your local machine, follow these steps:
+## Local Development
 
 ### Prerequisites
 
 - Python 3.8+
-- `pip` and `venv`
+- pip and virtualenv
+- Git
 
-### Clone the Repository
+### Setup
 
 ```bash
+# Clone the repository
 git clone https://github.com/riddhixraina/swe1-app.git
 cd swe1-app
-```
 
-### Create and Activate a Virtual Environment
-
-```bash
-# Create the environment
+# Create virtual environment
 python -m venv venv
 
-# Activate on Windows
+# Activate virtual environment
+# On Windows:
 .\venv\Scripts\activate
-
-# Activate on macOS/Linux
+# On Mac/Linux:
 source venv/bin/activate
-```
 
-### Install Dependencies
-
-```bash
+# Install dependencies
 pip install -r requirements.txt
-```
 
-### Run Database Migrations
-
-```bash
+# Run migrations
 python manage.py migrate
-```
 
-### Create an Admin Superuser
-
-```bash
+# Create superuser
 python manage.py createsuperuser
-```
-_Follow the prompts to create your admin account._
 
-### Run the Development Server
-
-```bash
+# Run development server
 python manage.py runserver
 ```
 
-The application will be available at [http://127.0.0.1:8000/polls/](http://127.0.0.1:8000/polls/).
+Visit http://127.0.0.1:8000/polls/ to see the application.
 
----
+## Running Tests
+
+```bash
+# Run tests
+python manage.py test
+
+# Run with coverage
+coverage run --source='.' manage.py test
+coverage report
+
+# Check code formatting
+black --check .
+
+# Run linter
+flake8 .
+```
 
 ## Deployment
 
-This application is configured for deployment to **AWS Elastic Beanstalk**.  
-The necessary configuration files are located in the `.ebextensions` directory.  
-The `django.config` file sets the required environment variables for the WSGI path and Django settings module.
+The application is automatically deployed to AWS Elastic Beanstalk when:
+- All tests pass
+- Code passes black formatting check
+- Code passes flake8 linting check
+- Changes are pushed to the `main` branch
 
+**Live Application:** http://swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com/polls/
+
+## Technologies Used
+
+- **Backend**: Django (Python)
+- **Database**: SQLite (development), PostgreSQL (production)
+- **CI/CD**: Travis CI
+- **Deployment**: AWS Elastic Beanstalk
+- **Testing**: Django TestCase, Coverage.py
+- **Code Quality**: Black, Flake8
+
+## License
+
+This project was created as part of a software engineering course assignment.
