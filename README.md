@@ -1,7 +1,7 @@
 # swe1-app
 
 [![Build Status](https://app.travis-ci.com/riddhixraina/swe1-app.svg?branch=main)](https://app.travis-ci.com/riddhixraina/swe1-app)
-[![Coverage Status](https://coveralls.io/repos/github/riddhixraina/swe1-app/badge.png?branch=main)](https://coveralls.io/github/riddhixraina/swe1-app?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/riddhixraina/swe1-app/badge.svg?branch=main&t=1)](https://coveralls.io/github/riddhixraina/swe1-app?branch=main)
 
 A Django polls application with continuous integration, automated testing, and AWS deployment.
 
