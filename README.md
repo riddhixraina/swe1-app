@@ -1,7 +1,7 @@
 # swe1-app
 
 [![Build Status](https://app.travis-ci.com/riddhixraina/swe1-app.svg?branch=main)](https://app.travis-ci.com/riddhixraina/swe1-app)
-[![Coverage Status](https://coveralls.io/repos/github/riddhixraina/swe1-app/badge.svg?branch=main)](https://coveralls.io/github/riddhixraina/swe1-app?branch=main)
+[![Coverage Status](https://coveralls.io/github/riddhixraina/swe1-app?branch=main)](https://coveralls.io/github/riddhixraina/swe1-app?branch=main)
 
 A Django polls application with continuous integration...
 # SWE-1 Polls Application
