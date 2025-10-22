@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +26,26 @@ SECRET_KEY = "django-insecure-(s9^pcv)gtxi3ojl8#*onw@+))le2e1c(pojtbhnzxs_hp*e$s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+APPEND_SLASH = True
 
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com/polls/",
+]
+
+# Allow your Elastic Beanstalk environment and HTTPS requests
+CSRF_TRUSTED_ORIGINS = [
+    "https://localhost:8000",
+    "https://swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com/polls/",  # or your AWS region
+]
+
+# Allow cookies to work securely
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+
+# Optional but good practice for production
+SECURE_SSL_REDIRECT = True
 
 # Application definition
 
@@ -117,7 +136,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = "static/"
+# STATIC_URL = "static/"
+
+STATIC_URL = "/static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

@@ -46,11 +46,28 @@ class ResultsView(generic.DetailView):
 
 
 def vote(request, question_id):
-    # same as in Part 3
+    """Handle voting for a question."""
     question = get_object_or_404(Question, pk=question_id)
-    try:
-        selected_choice = question.choice_set.get(pk=request.POST["choice"])
-    except (KeyError, Choice.DoesNotExist):
+
+    if request.method == "POST":
+        try:
+            selected_choice = question.choice_set.get(pk=request.POST["choice"])
+        except (KeyError, Choice.DoesNotExist):
+            # Show the same question page again with an error message
+            return render(
+                request,
+                "polls/detail.html",
+                {
+                    "question": question,
+                    "error_message": "You didn't select a valid choice.",
+                },
+            )
+        else:
+            selected_choice.votes += 1
+            selected_choice.save()
+            return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+    else:
+        # If someone tries to GET this URL directly, show the question with an error
         return render(
             request,
             "polls/detail.html",
@@ -59,7 +76,3 @@ def vote(request, question_id):
                 "error_message": "You didn't select a choice.",
             },
         )
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
