@@ -32,12 +32,17 @@ ALLOWED_HOSTS = [
     "localhost",
     "127.0.0.1",
     "swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com/polls/",
+    "swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com/admin",
+    "swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com",
+    ".elasticbeanstalk.com",
 ]
 
-# Allow your Elastic Beanstalk environment and HTTPS requests
 CSRF_TRUSTED_ORIGINS = [
-    "https://localhost:8000",
-    "https://swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com/polls/",  # or your AWS region
+    "https://swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com/polls/",
+    "https://swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com/admin",
+    "https://swe1-app-env.eba-ugzpcmix.us-west-2.elasticbeanstalk.com",
+    "https://*.elasticbeanstalk.com",
+    "https://*.us-west-2.elasticbeanstalk.com",
 ]
 
 # Allow cookies to work securely
