@@ -96,10 +96,8 @@ class PollsIndexViewTests(TestCase):
 
     def test_index_view_with_multiple_questions(self):
         """Test index view displays multiple questions"""
-        question1 = Question.objects.create(
-            question_text="Question 1?", pub_date=timezone.now()
-        )
-        question2 = Question.objects.create(
+        Question.objects.create(question_text="Question 1?", pub_date=timezone.now())
+        Question.objects.create(
             question_text="Question 2?",
             pub_date=timezone.now() - datetime.timedelta(days=1),
         )
@@ -233,9 +231,7 @@ class PollsVoteViewTests(TestCase):
         url = reverse("polls:vote", args=(question.id,))
         response = self.client.post(url, {"choice": choice.id})
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(
-            response, reverse("polls:results", args=(question.id,))
-        )
+        self.assertRedirects(response, reverse("polls:results", args=(question.id,)))
 
     def test_vote_increments_choice_votes(self):
         """Test that voting increments the choice's vote count"""
